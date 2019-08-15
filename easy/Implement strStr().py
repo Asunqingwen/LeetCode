@@ -15,11 +15,17 @@ If target does not exist in source, just return -1
 Input:source = "abcdabcdefg" ，target = "bcd"
 Output: 1
 Explanation: If the source contains the target content, return the location where the target first appeared in the source.
+
+What should we return when target is an empty string? This is a great question to ask during an interview.
+
+For the purpose of this problem, we will return 0 when target is an empty string. This is consistent to C's strstr() and Java's indexOf().
 """
 
 
 def strStr(source, target):
-	if not source or not target:
+	if not target:
+		return 0
+	if not source:
 		return -1
 	s_len = len(source)
 	t_len = len(target)
