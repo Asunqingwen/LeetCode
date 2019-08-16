@@ -36,9 +36,6 @@ def shortestPalindrome1(s: str) -> str:
 		return ""
 	length = len(s)
 	for i in range(length):
-		print(i)
-		print(s[:(length - i) // 2])
-		print(s[length - i - 1:(length - i - 1) // 2:-1])
 		if s[:(length - i) // 2] == s[length - i - 1:(length - i - 1) // 2:-1]:
 			return s[:length - i - 1:-1] + s
 
