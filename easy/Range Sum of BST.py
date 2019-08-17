@@ -40,7 +40,6 @@ class TreeNode:
 
 def stringToTreeNode(input):
 	input = input.strip()
-	input = input[1:-1]
 	if not input:
 		return None
 
@@ -73,7 +72,32 @@ def stringToTreeNode(input):
 
 
 def rangeSumBST(root: TreeNode, L: int, R: int) -> int:
-	pass
+	res = 0
+
+	def dfs(node):
+		if node:
+			if L <= node.val <= R:
+				nonlocal res
+				print(node.val)
+				res += node.val
+			if L < node.val:
+				dfs(node.left)
+			if node.val < R:
+				dfs(node.right)
+
+	dfs(root)
+	return res
+
+
+def rangeSumBST1(root: TreeNode, L: int, R: int) -> int:
+	if root is None:
+		return 0
+	if root.val < L:
+		return rangeSumBST1(root.right, L, R)
+	if root.val > R:
+		return rangeSumBST1(root.left, L, R)
+
+	return root.val + rangeSumBST1(root.left, L, R) + rangeSumBST1(root.right, L, R)
 
 
 if __name__ == '__main__':
@@ -81,4 +105,5 @@ if __name__ == '__main__':
 	L = 7
 	R = 15
 	root = stringToTreeNode(root)
-	print(root)
+	result = rangeSumBST(root, L, R)
+	print(result)
