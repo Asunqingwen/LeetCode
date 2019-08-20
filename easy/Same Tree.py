@@ -1,18 +1,15 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2019/8/20 0020 8:17
+# @Time    : 2019/8/20 0020 10:00
 # @Author  : 没有蜡笔的小新
 # @E-mail  : sqw123az@sina.com
-# @FileName: Merge Two Binary Trees.py
+# @FileName: Same Tree.py
 # @Software: PyCharm
 # @Blog    ：https://blog.csdn.net/Asunqingwen
 # @GitHub  ：https://github.com/Asunqingwen
-
 """
-Given two binary trees and imagine that when you put one of them to cover the other, some nodes of the two trees are overlapped while the others are not.
+Given two binary trees, write a function to check if they are the same or not.
 
-You need to merge them into a new binary tree. The merge rule is that if two nodes overlap, then sum node values up as the new value of the merged node. Otherwise, the NOT null node will be used as the node of new tree.
-
-Note: The merging process must start from the root nodes of both trees.
+Two binary trees are considered the same if they are structurally identical and the nodes have the same value.
 """
 
 
@@ -76,22 +73,21 @@ def treeNodeToString(root):
 	return "[" + output + "]"
 
 
-def mergeTrees(t1: TreeNode, t2: TreeNode) -> TreeNode:
-	if not t1 and t2:
-		return t2
-	elif t1 and t2:
-		t1.val += t2.val
-		t1.left = mergeTrees(t1.left, t2.left)
-		t1.right = mergeTrees(t1.right, t2.right)
-	return t1
+def isSameTree(p: TreeNode, q: TreeNode) -> bool:
+	if not p and not q:
+		return True
+	elif not p or not q:
+		return False
+	elif p.val == q.val:
+		return isSameTree(p.left, q.left) and isSameTree(p.right, q.right)
+	else:
+		return False
 
 
 if __name__ == '__main__':
-	input1 = "1,3,2,5"
-	input2 = "2,1,3,null,4,null,7"
-	root1 = stringToTreeNode(input1)
-	print(treeNodeToString(root1))
-	root2 = stringToTreeNode(input2)
-	output = mergeTrees(root1, root2)
-	output = treeNodeToString(output)
-	print(output)
+	input1 = "1,2,3"
+	input2 = "1,null,2"
+	p = stringToTreeNode(input1)
+	q = stringToTreeNode(input2)
+	result = isSameTree(p, q)
+	print(result)
