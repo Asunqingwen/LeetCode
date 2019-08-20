@@ -22,10 +22,20 @@ from typing import List
 
 
 def singleNumber(nums: List[int]) -> List[int]:
-	pass
+    xor = 0
+    for num in nums:
+        xor ^= num
+    mask = xor & (-xor)
+    res = [0] * 2
+    for num in nums:
+        if num & mask == 0:
+            res[0] ^= num
+        else:
+            res[1] ^= num
+    return res
 
 
 if __name__ == '__main__':
-	input = [1, 2, 1, 3, 2, 5]
-	output = singleNumber(input)
-	print(output)
+    input = [1, 2, 1, -4, 2, 167]
+    output = singleNumber(input)
+    print(output)
