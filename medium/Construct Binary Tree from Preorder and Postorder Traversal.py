@@ -1,39 +1,32 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2019/8/22 0022 15:14
+# @Time    : 2019/8/23 0023 16:00
 # @Author  : 没有蜡笔的小新
 # @E-mail  : sqw123az@sina.com
-# @FileName: Path Sum III.py
+# @FileName: Construct Binary Tree from Preorder and Postorder Traversal.py
 # @Software: PyCharm
 # @Blog    ：https://blog.csdn.net/Asunqingwen
 # @GitHub  ：https://github.com/Asunqingwen
 
 """
-You are given a binary tree in which each node contains an integer value.
+Return any binary tree that matches the given preorder and postorder traversals.
 
-Find the number of paths that sum to a given value.
+Values in the traversals pre and post are distinct positive integers.
 
-The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).
+ 
 
-The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.
+Example 1:
 
-Example:
+Input: pre = [1,2,4,5,3,6,7], post = [4,5,2,6,7,3,1]
+Output: [1,2,3,4,5,6,7]
+ 
 
-root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
+Note:
 
-      10
-     /  \
-    5   -3
-   / \    \
-  3   2   11
- / \   \
-3  -2   1
-
-Return 3. The paths that sum to 8 are:
-
-1.  5 -> 3
-2.  5 -> 2 -> 1
-3. -3 -> 11
+1 <= pre.length == post.length <= 30
+pre[] and post[] are both permutations of 1, 2, ..., pre.length.
+It is guaranteed an answer exists. If there exists multiple answers, you can return any of them.
 """
+from typing import List
 
 
 class TreeNode:
@@ -96,27 +89,34 @@ def treeNodeToString(root):
 	return "[" + output + "]"
 
 
-def pathSum(root: TreeNode, sum1: int) -> int:
-	sum_dict = {0: 1}
-
-	def addSum(root: TreeNode, pathSum: int) -> int:
-		res = 0
+def maxDepth(root: TreeNode) -> int:
+	def getDepth(root: TreeNode) -> int:
 		if not root:
 			return 0
-
-		pathSum += root.val
-		res += sum_dict.get(pathSum - sum1, 0)
-		sum_dict[pathSum] = sum_dict.get(pathSum, 0) + 1
-		res = addSum(root.left, pathSum) + addSum(root.right, pathSum) + res
-		sum_dict[pathSum] = sum_dict.get(pathSum) - 1
+		res = max(getDepth(root.left), getDepth(root.right)) + 1
 		return res
 
-	return addSum(root, 0)
+	return getDepth(root)
+
+
+def constructFromPrePost(pre: List[int], post: List[int]) -> TreeNode:
+	def getTree(pre, post):
+		if pre:
+			root = TreeNode(pre[0])
+			if pre[1:]:
+				if pre[1] == post[1]:
+					root.left = getTree(pre[1:], post[1:])
+				else:
+					left_index = pre.index(post[1])
+					right_index = post.index(pre[1])
+					root.left = getTree(pre[1:left_index], post[right_index:])
+					root.right = getTree(pre[left_index:], post[1:right_index])
+			return root
+	return getTree(pre, post[::-1])
 
 
 if __name__ == '__main__':
-	input = "1"
-	root = stringToTreeNode(input)
-	sum1 = 1
-	output = pathSum(root, sum1)
-	print(output)
+	pre = [1, 2, 4, 5, 3, 6, 7]
+	post = [4, 5, 2, 6, 7, 3, 1]
+	output = constructFromPrePost(pre, post)
+	print(treeNodeToString(output))

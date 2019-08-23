@@ -1,38 +1,29 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2019/8/22 0022 15:14
+# @Time    : 2019/8/23 0023 15:09
 # @Author  : 没有蜡笔的小新
 # @E-mail  : sqw123az@sina.com
-# @FileName: Path Sum III.py
+# @FileName: Maximum Depth of Binary Tree.py
 # @Software: PyCharm
 # @Blog    ：https://blog.csdn.net/Asunqingwen
 # @GitHub  ：https://github.com/Asunqingwen
 
 """
-You are given a binary tree in which each node contains an integer value.
+Given a binary tree, find its maximum depth.
 
-Find the number of paths that sum to a given value.
+The maximum depth is the number of nodes along the longest path from the root node down to the farthest leaf node.
 
-The path does not need to start or end at the root or a leaf, but it must go downwards (traveling only from parent nodes to child nodes).
-
-The tree has no more than 1,000 nodes and the values are in the range -1,000,000 to 1,000,000.
+Note: A leaf is a node with no children.
 
 Example:
 
-root = [10,5,-3,3,2,null,11,3,-2,null,1], sum = 8
+Given binary tree [3,9,20,null,null,15,7],
 
-      10
-     /  \
-    5   -3
-   / \    \
-  3   2   11
- / \   \
-3  -2   1
-
-Return 3. The paths that sum to 8 are:
-
-1.  5 -> 3
-2.  5 -> 2 -> 1
-3. -3 -> 11
+    3
+   / \
+  9  20
+    /  \
+   15   7
+return its depth = 3.
 """
 
 
@@ -96,27 +87,36 @@ def treeNodeToString(root):
 	return "[" + output + "]"
 
 
-def pathSum(root: TreeNode, sum1: int) -> int:
-	sum_dict = {0: 1}
-
-	def addSum(root: TreeNode, pathSum: int) -> int:
-		res = 0
+def maxDepth(root: TreeNode) -> int:
+	def getDepth(root: TreeNode) -> int:
 		if not root:
 			return 0
-
-		pathSum += root.val
-		res += sum_dict.get(pathSum - sum1, 0)
-		sum_dict[pathSum] = sum_dict.get(pathSum, 0) + 1
-		res = addSum(root.left, pathSum) + addSum(root.right, pathSum) + res
-		sum_dict[pathSum] = sum_dict.get(pathSum) - 1
+		res = max(getDepth(root.left), getDepth(root.right)) + 1
 		return res
 
-	return addSum(root, 0)
+	return getDepth(root)
+
+
+def maxDepth1(root: TreeNode) -> int:
+	if not root:
+		return 0
+	node_depth_dict = [[root, 1]]
+	depth = 0
+	while node_depth_dict:
+		node_depth = node_depth_dict.pop(0)
+		root = node_depth[0]
+		curr_depth = node_depth[1]
+		if root:
+			depth = max(depth, curr_depth)
+			if root.left:
+				node_depth_dict.append([root.left, curr_depth + 1])
+			if root.right:
+				node_depth_dict.append([root.right, curr_depth + 1])
+	return depth
 
 
 if __name__ == '__main__':
-	input = "1"
+	input = "3,9,20,null,null,15,7,null,null,8,null"
 	root = stringToTreeNode(input)
-	sum1 = 1
-	output = pathSum(root, sum1)
+	output = maxDepth1(root)
 	print(output)
