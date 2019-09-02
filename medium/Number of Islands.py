@@ -31,7 +31,8 @@ Output: 3
 """
 from typing import List
 
-#超时
+
+# 超时
 def numIslands(grid: List[List[str]]) -> int:
 	if not grid:
 		return 0
@@ -69,35 +70,43 @@ def numIslands1(grid: List[List[str]]) -> int:
 	if not grid:
 		return 0
 
-	def union():
-		pass
-
-	def find():
-		pass
-
 	row, col = len(grid), len(grid[0])
 	res = {}
-	queue_list = []
+
+	def union(x, y):
+		res[find(x)] = find(y)
+
+	def find(x):
+		res.setdefault(x, x)
+		# 寻找老大
+		par = x
+		while res[par] != par:
+			par = res[par]
+		# 路径压缩
+		while x != res[x]:
+			x, res[x] = res[x], par
+
+		return par
+
 	for i in range(row):
 		for j in range(col):
-			if grid[i][j]:
-				queue_list.append([i, j])
-	while queue_list:
-		i, j = queue_list.pop(0)
-		res[[i, j]] = [[i, j]]
-		r, d = j + 1, i + 1
-		if r < col and grid[i][r]:
-			res[[i, j]].append([i, r])
-			queue_list.append([i, r])
-		if d < row and grid[d][j]:
-			res[[i, j]].append([d, j])
-			queue_list.append([d, j])
+			if grid[i][j] == '1':
+				for x, y in [[1, 0], [0, 1]]:
+					temp_i = i + x
+					temp_j = j + y
+					if 0 <= temp_i < row and 0 <= temp_j < col and grid[temp_i][temp_j] == '1':
+						union(temp_i * col + temp_j, i * col + j)
+
+	queue_list = set()
+	for i in range(row):
+		for j in range(col):
+			if grid[i][j] == '1':
+				queue_list.add(find(i * col + j))
+
+	return len(queue_list)
 
 
 if __name__ == '__main__':
-	input = [["1", "0", "0", "1", "1", "1", "0", "1", "1", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0", "0"],
-	         ["1", "0", "0", "1", "1", "0", "0", "1", "0", "0", "0", "1", "0", "1", "0", "1", "0", "0", "1", "0"],
-	         ["0", "0", "0", "1", "1", "1", "1", "0", "1", "0", "1", "1", "0", "0", "0", "0", "1", "0", "1", "0"],
-	         ["0", "0", "0", "1", "1", "0", "0", "1", "0", "0", "0", "1", "1", "1", "0", "0", "1", "0", "0", "1"]]
-	result = numIslands(input)
+	input = [["1", "1", "1", "1", "0"], ["1", "1", "0", "1", "0"], ["1", "1", "0", "0", "0"], ["0", "0", "0", "0", "0"]]
+	result = numIslands1(input)
 	print(result)
