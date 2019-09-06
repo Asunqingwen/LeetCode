@@ -38,13 +38,34 @@ Note:
 -10000 < points[i][0] < 10000
 -10000 < points[i][1] < 10000
 """
+import heapq
 from typing import List
 
 
 def kClosest(points: List[List[int]], K: int) -> List[List[int]]:
+    distance = {}
+    ans = []
+    k_ans = set()
+    res = []
+    for point in points:
+        dis = point[0] ** 2 + point[1] ** 2
+        ans.append(dis)
+        if dis in distance:
+            distance[dis].append(point)
+        else:
+            distance[dis] = [point]
+    heapq.heapify(ans)
+    while K > 0:
+        k_ans.add(heapq.heappop(ans))
+        K -= 1
+    for i in k_ans:
+        if i in distance:
+            res.extend(distance[i])
+    return res
 
 
 if __name__ == '__main__':
-	points = [[1, 3], [-2, 2]]
-	k = 1
-	result = kClosest(points, k)
+    points = [[0,1],[1,0]]
+    k = 2
+    result = kClosest(points, k)
+    print(result)
