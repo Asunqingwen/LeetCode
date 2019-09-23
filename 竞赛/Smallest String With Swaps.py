@@ -41,16 +41,53 @@ Swap s[0] and s[1], s = "abc"
 """
 from typing import List
 
+import numpy as np
+
 
 def smallestStringWithSwaps(s: str, pairs: List[List[int]]) -> str:
-    s_dict = {}
-    for index,ss in enumerate(s):
-        if ss in s_dict:
-            s_dict[ss].append(index)
-        else:
-            s_dict[ss] = [index]
-    ans = sorted(s)
+	# 并查集的find函数,找老大
+	def ffind(a):
+		if a == fa[a]:
+			return a
+		f = ffind(fa[a])
+		fa[a] = f
+		return f
+
+	# 并查集的union函数
+	def union(a, b):
+		a = ffind(a)
+		b = ffind(b)
+		fa[a] = b
+
+	# 并查集维护集合
+	n = len(s)
+	fa = np.arange(n)
+	for a, b in pairs:
+		union(a, b)
+	for i in range(n):
+		ffind(i)
+	# 得到所有的place集合
+	unique_fa = np.unique(fa)
+	# 得到所有place集合中对应的字符串并排序
+	fa_str = {x: '' for x in unique_fa}
+	# 把小弟都连接起来
+	for i in range(n):
+		fa_str[fa[i]] += s[i]
+	for x in unique_fa:
+		fa_str[x] = sorted(fa_str[x])
+	# 计算每个place当前用到的index
+	fa_cnt = {x: 0 for x in unique_fa}
+	# 将排序完的字符串反映射回原串得到最后结果
+	ans = ''
+	for i in range(n):
+		x = fa[i]
+		ans += fa_str[x][fa_cnt[x]]
+		fa_cnt[x] += 1
+	return ans
+
 
 if __name__ == '__main__':
-    s = "dcab"
-    pairs = [[0, 3], [1, 2]]
+	s = "dcab"
+	pairs = [[0, 3], [1, 2]]
+	result = smallestStringWithSwaps(s, pairs)
+	print(result)

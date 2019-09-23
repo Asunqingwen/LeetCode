@@ -41,33 +41,39 @@ Constraints:
 It's guaranteed that the result will be in range [1, 2 * 10^9]
 """
 
+# 容次原理
+from math import gcd
+
 
 def nthUglyNumber(n: int, a: int, b: int, c: int) -> int:
-    res = set()
-    count = 1
-    while len(res) <= n:
-        tmp1, tmp2, tmp3 = a * count, b * count, c * count
-        res.add(tmp1)
-        index = count + 1
-        while a * index <= tmp2 and len(res) <= n:
-            res.add(a * index)
-            index += 1
+	# 最小公倍数
+	def lcm(a, b):
+		return a * b // gcd(a, b)
 
-        res.add(tmp2)
-        index = count + 1
-        while b * index <= tmp3 and len(res) <= n:
-            res.add(a * index)
-            index += 1
+	# 计算[1,mid]有多少丑数
+	def get_idx(mid):
+		return mid // a + mid // b + mid // c - mid // lcm(a, b) - mid // lcm(b, c) - mid // lcm(c, a) + mid // lcm(
+			lcm(a, b), c)
 
-        res.add(tmp3)
-        count += 1
-    return list(res)[n - 1]
+	left, right = 1, 2 * 10 ** 9 + 1
+	while left < right:
+		mid = (left + right + 1) // 2
+		idx = get_idx(mid)
+		if idx == n:
+			left = mid
+			break
+		elif idx < n:
+			left = mid
+		else:
+			right = mid
+	# return left - min(left % a, min(left % b, left % c))
+	return left
 
 
 if __name__ == '__main__':
-    n = 4
-    a = 2
-    b = 3
-    c = 4
-    result = nthUglyNumber(n, a, b, c)
-    print(result)
+	n = 10
+	a = 2
+	b = 3
+	c = 5
+	result = nthUglyNumber(n, a, b, c)
+	print(result)
