@@ -63,11 +63,10 @@ def nthUglyNumber(n: int, a: int, b: int, c: int) -> int:
 			left = mid
 			break
 		elif idx < n:
-			left = mid
+			left = mid + 1
 		else:
-			right = mid
-	# return left - min(left % a, min(left % b, left % c))
-	return left
+			right = mid - 1
+	return left - min(left % a, min(left % b, left % c))
 
 
 if __name__ == '__main__':

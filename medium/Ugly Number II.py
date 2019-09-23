@@ -24,29 +24,21 @@ n does not exceed 1690.
 
 
 def nthUglyNumber(n: int) -> int:
-	def isUglyNumber(num):
-		while num > 1:
-			if num % 2 == 0:
-				num //= 2
-			elif num % 3 == 0:
-				num //= 3
-			elif num % 5 == 0:
-				num //= 5
-			else:
-				return False
-		return True
-
-	count = 0
-	num = 1
-	while True:
-		if isUglyNumber(num):
-			count += 1
-			if count == n:
-				return num
-		num += 1
+    dp = [0] * n
+    dp[0] = 1
+    l_2, l_3, l_5 = 0, 0, 0
+    for i in range(1, n):
+        dp[i] = min(2 * dp[l_2], 3 * dp[l_3], 5 * dp[l_5])
+        if dp[i] >= 2 * dp[l_2]:
+            l_2 += 1
+        if dp[i] >= 3 * dp[l_3]:
+            l_3 += 1
+        if dp[i] >= 5 * dp[l_5]:
+            l_5 += 1
+    return dp[-1]
 
 
 if __name__ == '__main__':
-	n = 10
-	result = nthUglyNumber(n)
-	print(result)
+    n = 100
+    result = nthUglyNumber(n)
+    print(result)
