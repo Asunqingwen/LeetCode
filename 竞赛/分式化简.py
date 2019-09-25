@@ -40,13 +40,14 @@ from typing import List
 
 
 def fraction(cont: List[int]) -> List[int]:
-    res = [0,cont[-1]]
-    for i in range(len(cont)-1, -1, -1):
-        res[0] += cont[i]*res[1]
-        res[1]
-    return res
+	res = [cont[-1], 1]
+	for i in range(len(cont) - 2, -1, -1):
+		res[0], res[1] = res[1], res[0]
+		res[0] += cont[i] * res[1]
+	return res
+
 
 if __name__ == '__main__':
-    cont = [3, 2, 0, 2]
-    result = fraction(cont)
-    print(result)
+	cont = [0, 0, 3]
+	result = fraction(cont)
+	print(result)
