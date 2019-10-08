@@ -1,8 +1,8 @@
 # -*- coding: utf-8 -*-
-# @Time    : 2019/9/24 0024 22:39
+# @Time    : 2019/10/8 0008 9:29
 # @Author  : 没有蜡笔的小新
 # @E-mail  : sqw123az@sina.com
-# @FileName: 机器人大冒险.py
+# @FileName: Programmable Robot.py
 # @Software: PyCharm
 # @Blog    ：https://blog.csdn.net/Asunqingwen
 # @GitHub  ：https://github.com/Asunqingwen
@@ -15,7 +15,7 @@ R: 向x轴正方向移动一格。
 
 给定终点坐标(x, y)，返回机器人能否完好地到达终点。如果能，返回true；否则返回false。
 
-
+ 
 
 示例 1：
 
@@ -32,7 +32,7 @@ R: 向x轴正方向移动一格。
 输入：command = "URR", obstacles = [[4, 2]], x = 3, y = 2
 输出：true
 解释：到达终点后，再碰到障碍物也不影响返回结果。
-
+ 
 
 限制：
 
@@ -73,9 +73,9 @@ def robot(command: str, obstacles: List[List[int]], x: int, y: int) -> bool:
 
 
 if __name__ == '__main__':
-	command = "URR"
-	obstacles = [[4, 2]]
-	x = 3
-	y = 2
+	command = "UURRUUU"
+	obstacles = [[4, 5], [6, 1], [7, 10], [9, 1], [1, 1], [5, 0], [2, 8]]
+	x = 946
+	y = 2365
 	result = robot(command, obstacles, x, y)
 	print(result)
