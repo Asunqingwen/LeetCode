@@ -20,29 +20,24 @@ from typing import List
 
 
 def findStrobogrammatic(n: int) -> List[str]:
-	dict1 = {'0': '0', '1': '1', '6': '9', '8': '8', '9': '6'}
-	dict2 = {'0': '0', '1': '1', '8': '8'}
+	def helper(n):
+		if n <= 0:
+			return ['']
+		if n == 1:
+			return ['0', '1', '8']
+		ans = []
+		for i in helper(n - 2):
+			ans.append('0' + i + '0')
+			ans.append('1' + i + '1')
+			ans.append('6' + i + '9')
+			ans.append('8' + i + '8')
+			ans.append('9' + i + '6')
+		return ans
 
-	def helper(num):
-		n = len(num)
-		if n <= 1:
-			return num == '' or num[0] in dict2
-		if n % 2 != 0:
-			if num[n // 2] not in dict2:
-				return False
-			for i in range(n // 2):
-				if num[i] not in dict1 or dict1[num[i]] != num[-i - 1]:
-					return False
-		else:
-			for i in range(n // 2 + 1):
-				if num[i] not in dict1 or dict1[num[i]] != num[-i - 1]:
-					return False
-		return True
-
-	res = [] if n > 1 else ['0']
-	for i in range(10 ** (n - 1), 10 ** n):
-		if helper(str(i)):
-			res.append(str(i))
+	res = []
+	for i in helper(n):
+		if len(str(int(i))) == n:
+			res.append(i)
 	return res
 
 
