@@ -59,12 +59,12 @@ def longestWord1(words: List[str]) -> str:
 
 	longestword = set(dict[1])
 	for i in range(2, 31):
-		tmp = {w for w in dict[i] if w[:-1] in longestword}
+		tmp = [w for w in dict[i] if w[:-1] in longestword]
 		if not tmp:
 			break
 		longestword = tmp
 
-	return sorted(list(longestword))[0]
+	return sorted(longestword)[0]
 
 
 
