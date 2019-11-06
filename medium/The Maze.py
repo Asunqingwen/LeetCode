@@ -81,7 +81,7 @@ def hasPath(maze: List[List[int]], start: List[int], destination: List[int]) -> 
 				continue
 			if (i, j) not in visited:
 				ans.append((i, j))
-				visited.add((i,j))
+				visited.add((i, j))
 	return False
 
 
