@@ -125,7 +125,7 @@ if __name__ == '__main__':
 
     cache.put(1, 1)
     cache.put(2, 2)
-    print(cache.get(1))  # 返回1
+    # print(cache.get(1))  # 返回1
     cache.put(3, 3)  # 去除key2
     print(cache.get(2))  # 返回-1，未找到key 2
     print(cache.get(3))  # 返回3
