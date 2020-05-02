@@ -1,0 +1,5 @@
+
+vpython:S117,"ZRename this local variable "dummyRoot" to match the regular expression ^[_a-z][a-z0-9_]*$.(˜ø®Îüÿÿÿÿ
+qpython:S1542*"YRename function "stringToListNode" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Ú—áð
+qpython:S15426"YRename function "listNodeToString" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Ê´ø—
+kpython:S1542A"SRename function "middleNode" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(»¨•â
