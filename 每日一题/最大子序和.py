@@ -28,7 +28,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    nums = [-2, 1, -3, 4, -1, 2, 1, -5, 4]
+    nums = [-2, -3, -1, -5]
     sol = Solution()
     result = sol.maxSubArray(nums)
     print(result)
