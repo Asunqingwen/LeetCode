@@ -32,7 +32,7 @@ class Solution:
 
 
 if __name__ == '__main__':
-    nums = [2, 3, 1, 1, 4, 2, 1]
+    nums = [2, 3, 1, 1, 4]
     sol = Solution()
     result = sol.jump(nums)
     print(result)
