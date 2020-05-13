@@ -35,3 +35,13 @@ L
 每日一题/最低票价.py,1\c\1c8bfb3f9d0ec5e63981ee8122dc969766c38f75
 U
 %每日一题/另一个树的子树.py,5\b\5b2b46f8d3802f145560a1f57a0fe0410852f7a7
+H
+动态规划/__init__.py,b\8\b85eca1028cc8bf50a53b23f47fedc10438d7ebf
+a
+1动态规划/区域和检索 - 数组不可变.py,e\2\e2e812c349004fb098830660562a77145be6fff4
+L
+动态规划/除数博弈.py,b\c\bc5ac32104031a23ae77f65af43d5a600fe8d804
+N
+每日一题/x 的平方根.py,3\b\3bc0d7ac364f9d6aefde99eda7be8f7dc7661f9c
+H
+每日一题/pow(x,n).py,5\c\5ca45835455c19f297541f75f63d0086a3fee188
