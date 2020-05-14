@@ -45,3 +45,11 @@ N
 每日一题/x 的平方根.py,3\b\3bc0d7ac364f9d6aefde99eda7be8f7dc7661f9c
 H
 每日一题/pow(x,n).py,5\c\5ca45835455c19f297541f75f63d0086a3fee188
+X
+(每日一题/二叉树的层次遍历.py,a\4\a4fca8340a1c569e5a3ca35bf8ca521a9cb5e4b1
+I
+每日一题/最大栈.py,a\c\ac89f81903a11bae1458bef3fa964b19d3a09d54
+I
+每日一题/最小数.py,c\2\c21bca760edfeeab0df1d7a52048f784f40620a1
+Y
+)每日一题/二叉树的层次遍历2.py,1\f\1fba3bf25490ac49641186d4fec8a2f8c8000b83
