@@ -65,3 +65,5 @@ V
 &每日一题/验证回文字符串2.py,4\1\41407b878d75ff0ee09e7b57cdfad9f06f550f77
 p
 @每日一题/每个元音包含偶数次的最长子字符串.py,9\d\9df9f12bd682ffbc8d6ce1ed6f6c69ff6f5fa8f3
+R
+"每日一题/最长回文子串.py,6\c\6cfd18b86f43a59dccfd03504e7aab106d5bfada
