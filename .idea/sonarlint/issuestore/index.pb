@@ -67,3 +67,9 @@ p
 @每日一题/每个元音包含偶数次的最长子字符串.py,9\d\9df9f12bd682ffbc8d6ce1ed6f6c69ff6f5fa8f3
 R
 "每日一题/最长回文子串.py,6\c\6cfd18b86f43a59dccfd03504e7aab106d5bfada
+O
+每日一题/LRU缓存机制.py,a\3\a39d488fdf77799be0ff0b71f8e27b1807ba1879
+O
+每日一题/寻找重复数.py,7\e\7e470873bece84f30de2ece0c59b87bb87a8e1b1
+^
+.每日一题/和可被 K 整除的子数组.py,5\4\54236a560245dbd954645bab769c0d0080f99951
