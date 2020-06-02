@@ -36,7 +36,7 @@ from typing import List
 
 
 class Solution:
-    def kidsWithCandies(self, candies: List[int], extraCandies: int) -> List[bool]:
+    def kidsWithCandies1(self, candies: List[int], extraCandies: int) -> List[bool]:
         ans = []
         max_candies = max(candies)
         for candie in candies:
@@ -46,10 +46,14 @@ class Solution:
                 ans.append(False)
         return ans
 
+    def kidsWithCandies2(self, candies: List[int], extraCandies: int) -> List[bool]:
+        max_candies = max(candies)
+        return [candie + extraCandies >= max_candies for candie in candies]
+
 
 if __name__ == '__main__':
     candies = [2, 3, 5, 1, 3]
     extraCandies = 3
     sol = Solution()
-    result = sol.kidsWithCandies(candies, extraCandies)
+    result = sol.kidsWithCandies1(candies, extraCandies)
     print(result)
