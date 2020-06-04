@@ -30,40 +30,41 @@ stack.top(); -> 5
 操作次数不会超过 10000。
 当栈为空的时候不会出现后四个操作。
 """
-import math
 
 
 class MaxStack:
 
     def __init__(self):
-        """
-        initialize your data structure here.
-        """
-        self.nums = []
-        self.max_nums = [-math.inf]
+        self.stack1 = []
+        self.stack2 = []
 
     def push(self, x: int) -> None:
-        self.nums.append(x)
-        self.max_nums.append(max(self.max_nums[-1], x))
+        self.stack1.append(x)
+        if not self.stack2 or x >= self.stack2[-1]:
+            self.stack2.append(x)
 
     def pop(self) -> int:
-        self.max_nums.pop()
-        return self.nums.pop()
+        pop_num = self.stack1.pop()
+        if pop_num == self.stack2[-1]:
+            self.stack2.pop()
+        return pop_num
 
     def top(self) -> int:
-        return self.nums[-1]
+        return self.stack1[-1]
 
     def peekMax(self) -> int:
-        return self.max_nums[-1]
+        return self.stack2[-1]
 
     def popMax(self) -> int:
-        max_num = self.max_nums[-1]
-        temp = []
-        while self.nums[-1] != max_num:
-            temp.append(self.nums.pop())
-        self.nums.pop()
-        map(self.push(), reversed(temp))
-        return max_num
+        pop_item = self.stack2.pop()
+        for i in range(len(self.stack1) - 1, -1, -1):
+            if self.stack1[i] == pop_item:
+                self.stack1.pop(i)
+                for j in range(i, len(self.stack1)):
+                    if not self.stack2 or self.stack1[j] >= self.stack2[-1]:
+                        self.stack2.append(self.stack1[j])
+                break
+        return pop_item
 
 
 if __name__ == '__main__':
