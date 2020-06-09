@@ -37,6 +37,7 @@ equations[i][0] 和 equations[i][3] 是小写字母
 equations[i][1] 要么是 '='，要么是 '!'
 equations[i][2] 是 '='
 """
+from typing import List
 
 
 class Solution:
