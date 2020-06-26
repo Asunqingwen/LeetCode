@@ -177,3 +177,13 @@ R
 .每日一题/从先序遍历还原二叉树.py,1\6\16d30b2f4ef8f36ac58ab5dd75afcb012e78ebee
 L
 每日一题/模式匹配.py,4\d\4da8dc50c835c08322af830e7962e351608a2c24
+X
+(每日一题/最接近的三数之和.py,4\9\49ec3a9685c3f776a8d5c3da75c8f16abde132b0
+X
+(每日一题/有效三角形的个数.py,6\c\6cdaf555ef076206816300ee1c9f33ba07db0bdd
+U
+%每日一题/较小的三数之和.py,2\d\2d57c929005cac43ea76209709c3ef72c20a9afe
+V
+&每日一题/小于K的两数之和.py,6\d\6d50014438503ce05e1b5ab2d0e0a2393d8c3bfd
+L
+动态规划/单词拆分.py,4\2\423291fbfee8ee9d8526c5e3caa72d3bda9b081e
