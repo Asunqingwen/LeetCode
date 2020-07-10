@@ -25,7 +25,7 @@ class Solution:
         if shorter == longer:
             return [shorter * k]
         res = []
-        for i in range(k+1):
+        for i in range(k + 1):
             res.append((k - i) * shorter + i * longer)
         return res
 
