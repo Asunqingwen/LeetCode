@@ -1,0 +1,8 @@
+
+Jpython:S5806
+"+Rename this variable; it shadows a builtin.(³ŠÕû8ìÏãÜµ.
+zpython:S117$"\Rename this local variable "rightNumber" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤÷ÂÆ8î¢¸“.
+python:S117"\Rename this local variable "inputValues" to match the regular expression ^[_a-z][a-z0-9_]*$.(ê–Šùÿÿÿÿ8î¢¸“.
+xpython:S1542	"YRename function "stringToTreeNode" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ÓúÚØ8î¢¸“.
+~python:S117"[Rename this local variable "leftNumber" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤ÔñÍûÿÿÿÿ8î¢¸“.
+}python:S117"ZRename this local variable "nodeQueue" to match the regular expression ^[_a-z][a-z0-9_]*$.(†û™ªùÿÿÿÿ8î¢¸“.

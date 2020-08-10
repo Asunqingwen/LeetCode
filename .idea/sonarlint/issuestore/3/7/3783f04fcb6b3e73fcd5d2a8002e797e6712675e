@@ -1,0 +1,9 @@
+
+xpython:S117+"\Rename this local variable "inputValues" to match the regular expression ^[_a-z][a-z0-9_]*$.(ê–Šùÿÿÿÿ
+wpython:S1177"[Rename this local variable "leftNumber" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤ÔñÍûÿÿÿÿ
+vpython:S117-"ZRename this local variable "nodeQueue" to match the regular expression ^[_a-z][a-z0-9_]*$.(†û™ªùÿÿÿÿ
+spython:S117A"\Rename this local variable "rightNumber" to match the regular expression ^[_a-z][a-z0-9_]*$.(¤÷ÂÆ
+qpython:S1542&"YRename function "stringToTreeNode" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ÓúÚØ
+vpython:S1542G"YRename function "treeNodeToString" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(Ü¦¦şÿÿÿÿ
+ppython:S1542["SRename function "levelOrder" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(ú—øúÿÿÿÿ
+lpython:S1542n"TRename function "levelOrder1" to match the regular expression ^[a-z_][a-z0-9_]{2,}$.(›ò™
