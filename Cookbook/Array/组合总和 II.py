@@ -31,7 +31,6 @@ from typing import List
 
 class Solution:
     def combinationSum2(self, candidates: List[int], target: int) -> List[List[int]]:
-        candidates.sort()
 
         def helper(candidates, index, target):
             if target == 0:
