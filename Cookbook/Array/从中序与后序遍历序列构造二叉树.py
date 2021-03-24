@@ -33,6 +33,7 @@ class Solution:
             index = indexs[val]
             root.right = helper(index + 1, inorder_right)
             root.left = help(inorder_left, index - 1)
+            return root
 
         indexs = {v: i for i, v in enumerate(inorder)}
         return helper(0, len(inorder) - 1)
