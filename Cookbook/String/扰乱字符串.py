@@ -41,10 +41,10 @@ s1 和 s2 由小写英文字母组成
 from collections import Counter
 from functools import lru_cache
 
-
 class Solution:
     def isScramble(self, s1: str, s2: str) -> bool:
-        @lru_cache()
+        # @cache,python3.9加入
+        @lru_cache
         def dfs(i1: int, i2: int, length: int) -> bool:
             '''
             第一个字符串从i1开始，第二个字符串从i2开始，子串的长度为length，是否和谐
