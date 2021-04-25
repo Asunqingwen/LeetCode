@@ -40,9 +40,8 @@ class Solution:
         return dp[target]
 
 
-
 if __name__ == '__main__':
-    nums = [3,33,333]
+    nums = [3, 33, 333]
     target = 10000
     sol = Solution()
     print(sol.combinationSum4(nums, target))
