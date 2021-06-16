@@ -55,7 +55,8 @@ class Solution:
 
         return ans
 
+
 if __name__ == '__main__':
-    stones = [31,26,33,21,40]
+    stones = [31, 26, 33, 21, 40]
     sol = Solution()
     print(sol.lastStoneWeightII(stones))
