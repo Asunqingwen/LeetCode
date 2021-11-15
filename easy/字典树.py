@@ -7,7 +7,7 @@ class Node():
         self.children = []
 
 
-def toJSON(destList=[]):
+def toJSON(destList=[]) -> list:
     results = []
     if destList:
         for dest in destList:

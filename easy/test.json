@@ -1,0 +1,36 @@
+[
+    {
+        "name": "root",
+        "children": [
+            {
+                "name": "type1",
+                "children": [
+                    {
+                        "name": "1122",
+                        "children": []
+                    },
+                    {
+                        "name": "a",
+                        "children": []
+                    },
+                    {
+                        "name": "b",
+                        "children": []
+                    }
+                ]
+            },
+            {
+                "name": "type3",
+                "children": []
+            },
+            {
+                "name": "type4",
+                "children": []
+            },
+            {
+                "name": "type5",
+                "children": []
+            }
+        ]
+    }
+]
