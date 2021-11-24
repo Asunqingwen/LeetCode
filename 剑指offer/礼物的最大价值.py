@@ -17,6 +17,6 @@ class Solution:
 
 
 if __name__ == '__main__':
-    sol = Solution()
+    sol = Solution() 
     grid = [[1, 2, 3], [4, 5, 6]]
     sol.maxValue(grid)
